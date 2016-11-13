@@ -1,0 +1,4 @@
+flask
+pytest
+python-dateutil
+pyserial
