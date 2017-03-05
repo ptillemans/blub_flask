@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="{{ url_for('manual_heat') }}" method=post class=add-entry>
+    <input type=submit value='Verwarm nu!'></dd>
+  </form>
+  <p>Status: {{ status.status }}</p>
+  <div class=status>
+  <table>
+    <tr>
+      <th>Huidige temperatuur:</th>
+      <td>{{ status.temperature }}</td>
+    </tr>
+    <tr>
+      <th>Gewenste temperatuur:</th>
+      <td>{{ status.desired }}</td>
+    </tr>
+    <tr>
+      <th>Verwarming:</th>
+      <td>{{ 'Aan' if status.heating == 'on' else 'Uit' }}</td>
+    </tr>
+    <tr>
+      <th>Debounce:</th>
+      <td>{{ status.debounce }} / {{ status.debounce_max }}</td>
+    </tr>
+    <tr>
+      <th>Manual Time Left:</th>
+      <td>{{ status.manual_time_left }}</td>
+    </tr>
+    <tr>
+      <th>Clock:</th>
+      <td>Day: {{ status.day }}, time: {{ status.dtm }}</td>
+    </tr>
+  </table>
+{% endblock %}
